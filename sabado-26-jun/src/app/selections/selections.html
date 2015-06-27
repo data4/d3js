@@ -1,0 +1,230 @@
+<div class="container">
+
+	<div>
+    	<acme-navbar creationDate="main.creationDate" />
+ 	</div>
+
+ 	
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<svg width="720" height="300">
+			  <circle cx="40" cy="60" r="10"></circle>
+			  <circle cx="80" cy="60" r="10"></circle>
+			  <circle cx="120" cy="60" r="10"></circle>
+			</svg>
+		</div>
+	</div>	
+
+	<script type="text/javascript">
+		var svg = d3.select('svg'); 
+		
+		svg.append('circle')
+			.attr('cx', 180)
+			.attr('cy', 60)
+			.attr('r',10); ;
+
+		
+		var circle = svg.select('circle'); 
+		circle.attr('r', 20); 
+		circle.style('fill','red'); 
+
+		
+		svg.append('circle')
+			.classed('alecs',true); 
+
+		var circle = svg.select('circle.alecs')
+						.attr('cx', 280)
+						.attr('cy', 60)
+						.attr('r',10); 
+
+		// circle = svg.selectAll('circle')
+		// 					.attr('r', function(d,i){
+		// 						return i*5+10; 
+		// 					})
+
+		// circle = svg.selectAll('circle')
+		// 					.style("fill", "white")
+		// 					.transition()
+		// 					.delay(500)
+		// 					.duration(5000)
+		// 	 				.style("fill", "black")
+		// 	 				.attr('r', function(d,i){
+		// 						return i*10+10; 
+		// 					});
+	
+
+		// circle = svg.selectAll('circle')
+		// 					.on('click', function(d,i){
+		// 						alert('Clicked!', d, i)
+		// 						console.log(d,i);
+		// 					});	
+
+		// circle = svg.selectAll('circle')
+		// 	 				.on('mouseover', function(d,i){
+		// 	 					d3.select(this)
+		// 						      .style("fill", 'blue');
+		// 					});	
+
+		// circle = svg.selectAll('circle')
+		// 	 				.on('mouseout', function(d,i){
+		// 	 					d3.select(this)
+		// 						      .style("fill", 'black');
+		// 					});	
+
+		circle = svg.selectAll('circle')
+			 				.on('mousedown', function(d,i){
+			 					
+									var circle = d3.select(this)
+								      .classed("active", true);
+
+									var svg = d3.select('svg')
+									  .on("mousemove", mousemove)
+									  .on("mouseup", mouseup);
+
+
+									function mousemove() {
+
+										coordinates = d3.mouse(this);
+
+										d3.select('circle.active')
+											.attr('cx', coordinates[0])
+											.attr('cy', coordinates[1])
+									}
+
+									function mouseup() {
+										circle.classed("active", false);
+										svg.on("mousemove", null).on("mouseup", null);
+									}
+
+							})	
+
+	</script>
+
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Operaciónes después del select</h2>
+			<p># selection.append(name) <p>
+			<pre>
+			 	var svg = d3.select('svg').append('circle')
+			</pre>
+
+			<p># selection.attr(name[, value])	</p>
+			<pre>
+				circle = svg.select('circle')
+							.attr('r', 20)
+			</pre>
+
+			<p># selection.style(name[, value[, priority]])	</p>
+			<pre>
+				circle.style('fill','red'); 
+			</pre>
+
+			<p># selection.classed(name[, value])	</p>
+			<pre>
+				circle.classed('alecs',true); 
+			</pre>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Usando el selectAll</h2>
+			<p># selectAll.(selector) <p>
+			<pre>
+			 	circle = svg.selectAll('circle')
+							.attr('r', function(i,d){
+								return i*10+10; 
+							})
+			</pre>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Transiciones</h2>
+
+			<p># select.transition <p>
+			<pre>
+			 	circle = svg.selectAll('circle')
+			 				.style("fill", "white")
+							.transition()
+							.delay(500)
+							.duration(5000)
+			 				.style("fill", "black")
+			 				.attr('r', function(i,d){
+								return i*10+10; 
+							});
+	
+
+
+			</pre>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Operaciones con el mouse</h2>
+			<p># click <p>
+			<pre>
+			 	circle = svg.selectAll('circle')
+							.on('click', function(d,i){
+								alert('Clicked!')
+							})	
+			</pre>
+
+			<p># mouseover<p>
+			<pre>
+			 	circle = svg.selectAll('circle')
+			 				.on('mouseover', function(d,i){
+			 					d3.select(this)
+								      .style("fill", 'blue');
+							})	
+			</pre>
+
+
+			<p># mouseout<p>
+			<pre>
+			 	circle = svg.selectAll('circle')
+			 				.on('mouseout', function(d,i){
+			 					d3.select(this)
+								      .style("fill", 'black');
+							});	
+			</pre>
+
+			
+
+			<p># mousedown, mousemove, mousedup<p>
+			<pre>
+			 	circle = svg.selectAll('circle')
+			 				.on('mousedown', function(d,i){
+			 					
+								var div = d3.select(this)
+									.classed("active", true);
+
+								var svg = d3.select('svg')
+								  .on("mousemove", mousemove)
+								  .on("mouseup", mouseup);
+
+								function mousemove() {
+									
+
+									d3.select(this)
+										.attr('cx', coordinates[0])
+										.attr('cy', coordinates[y])
+								}
+
+								function mouseup() {
+									div.classed("active", false);
+									svg.on("mousemove", null).on("mouseup", null);
+								}
+
+							})	
+			</pre>
+		</div>
+	</div>
+
+
+
+</div>

@@ -1,0 +1,243 @@
+<div class='container'>
+
+
+
+	<div>
+    	<acme-navbar creationDate="main.creationDate" />
+ 	</div>
+
+	<style>
+
+		.chart rect,
+		.chart-d3 rect {
+		  fill: steelblue;
+		}
+
+		.chart text,
+		.chart-d3 text {
+		  fill: white;
+		  font: 10px sans-serif;
+		  text-anchor: end;
+		}
+
+	</style>
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Transformando la gráfica a svg </h2>
+			<pre><code class="html xml"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css">
+
+<span class="class">.chart</span> <span class="tag">rect</span> <span class="rules">{
+  <span class="rule"><span class="attribute">fill</span>:<span class="value"> steelblue</span>;</span>
+<span class="rule">}</span></span>
+
+<span class="class">.chart</span> <span class="tag">text</span> <span class="rules">{
+  <span class="rule"><span class="attribute">fill</span>:<span class="value"> white</span>;</span>
+  <span class="rule"><span class="attribute">font</span>:<span class="value"> <span class="number">10</span>px sans-serif</span>;</span>
+  <span class="rule"><span class="attribute">text-anchor</span>:<span class="value"> end</span>;</span>
+<span class="rule">}</span></span>
+
+</span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;<span class="title">svg</span> <span class="attribute">class</span>=<span class="value">"chart"</span> <span class="attribute">width</span>=<span class="value">"420"</span> <span class="attribute">height</span>=<span class="value">"120"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">g</span> <span class="attribute">transform</span>=<span class="value">"translate(0,0)"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">width</span>=<span class="value">"40"</span> <span class="attribute">height</span>=<span class="value">"19"</span>&gt;</span><span class="tag">&lt;/<span class="title">rect</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"37"</span> <span class="attribute">y</span>=<span class="value">"9.5"</span> <span class="attribute">dy</span>=<span class="value">".35em"</span>&gt;</span>4<span class="tag">&lt;/<span class="title">text</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">g</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">g</span> <span class="attribute">transform</span>=<span class="value">"translate(0,20)"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">width</span>=<span class="value">"80"</span> <span class="attribute">height</span>=<span class="value">"19"</span>&gt;</span><span class="tag">&lt;/<span class="title">rect</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"77"</span> <span class="attribute">y</span>=<span class="value">"9.5"</span> <span class="attribute">dy</span>=<span class="value">".35em"</span>&gt;</span>8<span class="tag">&lt;/<span class="title">text</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">g</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">g</span> <span class="attribute">transform</span>=<span class="value">"translate(0,40)"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">width</span>=<span class="value">"150"</span> <span class="attribute">height</span>=<span class="value">"19"</span>&gt;</span><span class="tag">&lt;/<span class="title">rect</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"147"</span> <span class="attribute">y</span>=<span class="value">"9.5"</span> <span class="attribute">dy</span>=<span class="value">".35em"</span>&gt;</span>15<span class="tag">&lt;/<span class="title">text</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">g</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">g</span> <span class="attribute">transform</span>=<span class="value">"translate(0,60)"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">width</span>=<span class="value">"160"</span> <span class="attribute">height</span>=<span class="value">"19"</span>&gt;</span><span class="tag">&lt;/<span class="title">rect</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"157"</span> <span class="attribute">y</span>=<span class="value">"9.5"</span> <span class="attribute">dy</span>=<span class="value">".35em"</span>&gt;</span>16<span class="tag">&lt;/<span class="title">text</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">g</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">g</span> <span class="attribute">transform</span>=<span class="value">"translate(0,80)"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">width</span>=<span class="value">"230"</span> <span class="attribute">height</span>=<span class="value">"19"</span>&gt;</span><span class="tag">&lt;/<span class="title">rect</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"227"</span> <span class="attribute">y</span>=<span class="value">"9.5"</span> <span class="attribute">dy</span>=<span class="value">".35em"</span>&gt;</span>23<span class="tag">&lt;/<span class="title">text</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">g</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">g</span> <span class="attribute">transform</span>=<span class="value">"translate(0,100)"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">rect</span> <span class="attribute">width</span>=<span class="value">"420"</span> <span class="attribute">height</span>=<span class="value">"19"</span>&gt;</span><span class="tag">&lt;/<span class="title">rect</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">text</span> <span class="attribute">x</span>=<span class="value">"417"</span> <span class="attribute">y</span>=<span class="value">"9.5"</span> <span class="attribute">dy</span>=<span class="value">".35em"</span>&gt;</span>42<span class="tag">&lt;/<span class="title">text</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">g</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">svg</span>&gt;</span></code></pre>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<svg class="chart" width="420" height="120">
+			  <g transform="translate(0,0)">
+			    <rect width="40" height="19"></rect>
+			    <text x="37" y="9.5" dy=".35em">4</text>
+			  </g>
+			  <g transform="translate(0,20)">
+			    <rect width="80" height="19"></rect>
+			    <text x="77" y="9.5" dy=".35em">8</text>
+			  </g>
+			  <g transform="translate(0,40)">
+			    <rect width="150" height="19"></rect>
+			    <text x="147" y="9.5" dy=".35em">15</text>
+			  </g>
+			  <g transform="translate(0,60)">
+			    <rect width="160" height="19"></rect>
+			    <text x="157" y="9.5" dy=".35em">16</text>
+			  </g>
+			  <g transform="translate(0,80)">
+			    <rect width="230" height="19"></rect>
+			    <text x="227" y="9.5" dy=".35em">23</text>
+			  </g>
+			  <g transform="translate(0,100)">
+			    <rect width="420" height="19"></rect>
+			    <text x="417" y="9.5" dy=".35em">42</text>
+			  </g>
+			</svg>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Creando la gráfica con D3 </h2>
+			<div class="">
+				<svg class="chart-d3"></svg>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+
+		// var data = [4, 8, 15, 16, 23, 42];
+
+		// var width = 420,
+		//     barHeight = 20;
+
+		// var x = d3.scale.linear()
+		//     .domain([0, d3.max(data)])
+		//     .range([0, 220]);
+
+		// var chart = d3.select(".chart-d3")
+		//     .attr("width", width)
+		//     .attr("height", barHeight * data.length);
+
+		// var bar = chart.selectAll("g")
+		//     .data(data)
+		//   .enter().append("g")
+		//     .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+
+		// bar.append("rect")
+		//     .attr("width", function(d,i){ return x(d)})
+		//     .attr("height", barHeight - 1);
+
+		// bar.append("text")
+		//     .attr("x", function(d) { return x(d) - 3; })
+		//     .attr("y", barHeight / 2)
+		//     .attr("dy", ".35em")
+		//     .text(function(d) { return d; });
+
+
+		var width = 420,
+		    barHeight = 20;
+
+		var x = d3.scale.linear()
+		    .range([0, width]);
+
+		var chart = d3.select(".chart-d3")
+		    .attr("width", width);
+
+		d3.tsv("app/scales/data.tsv", type, function(error, data) {
+		  x.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+		  chart.attr("height", barHeight * data.length);
+
+		  var bar = chart.selectAll("g")
+		      .data(data)
+		    .enter().append("g")
+		      .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
+
+		  bar.append("rect")
+		      .attr("width", function(d) { return x(d.value); })
+		      .attr("height", barHeight - 1);
+
+		  bar.append("text")
+		      .attr("x", function(d) { return x(d.value) - 3; })
+		      .attr("y", barHeight / 2)
+		      .attr("dy", ".35em")
+		      .text(function(d) { return d.value; });
+		});
+
+		function type(d) {
+		  d.value = +d.value; // coerce to number
+		  return d;
+		}
+
+
+	</script>
+
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Escalas Lineales </h2>
+			
+			<pre >
+				var x = d3.scale.linear()
+					.domain([0, 100]); 
+		    		.range([0, width]);
+			</pre>
+			
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Escalas Ordinales </h2>
+			
+			<pre >
+				var o = d3.scale.ordinal()
+				    .domain(['Alecs', 'David', 'Hector', 'Chepe'])
+				    .rangePoints([0, 100]);
+
+				o.range(); // [0, 33.333333333333336, 66.66666666666667, 100]
+			</pre>
+			
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Cargando Datos ( d3.tsv , d3.csv, d3.json) </h2>
+			
+			<pre style="tab-size:16;">
+				<code class="javascript">
+name 		value
+Locke		<span class="number">4</span>
+Reyes		<span class="number">8</span>
+Ford		<span class="number">15</span>
+Jarrah		<span class="number">16</span>
+Shephard		<span class="number">23</span>
+Kwon		<span class="number">42</span>
+				</code>
+			</pre>
+
+			<p>// 1. Código afuera corre primero antes de descargar los datos.</p>
+			<p>d3.tsv("data.tsv", function(error, data) {
+				  // 3. Código aquí corre al final, despues de la descarga
+				});
+			</p>
+
+			<p>	
+				// 2. Código aquí corre segundo, mientras de descarga el archivo.
+			<p>
+
+			
+		</div>
+	</div>
+
+
+</div>

@@ -1,0 +1,96 @@
+<div class='container'>
+
+
+
+	<div>
+    	<acme-navbar creationDate="main.creationDate" />
+ 	</div>
+
+	<style>
+
+		.chart rect {
+		  fill: steelblue;
+		}
+
+		.chart text {
+		  fill: white;
+		  font: 10px sans-serif;
+		  text-anchor: end;
+		}
+
+	</style>
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<svg class="chart" width="420" height="120">
+			  <g transform="translate(0,0)">
+			    <rect width="40" height="19"></rect>
+			    <text x="37" y="9.5" dy=".35em">4</text>
+			  </g>
+			  <g transform="translate(0,20)">
+			    <rect width="80" height="19"></rect>
+			    <text x="77" y="9.5" dy=".35em">8</text>
+			  </g>
+			  <g transform="translate(0,40)">
+			    <rect width="150" height="19"></rect>
+			    <text x="147" y="9.5" dy=".35em">15</text>
+			  </g>
+			  <g transform="translate(0,60)">
+			    <rect width="160" height="19"></rect>
+			    <text x="157" y="9.5" dy=".35em">16</text>
+			  </g>
+			  <g transform="translate(0,80)">
+			    <rect width="230" height="19"></rect>
+			    <text x="227" y="9.5" dy=".35em">23</text>
+			  </g>
+			  <g transform="translate(0,100)">
+			    <rect width="420" height="19"></rect>
+			    <text x="417" y="9.5" dy=".35em">42</text>
+			  </g>
+			</svg>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Cargando Datos </h2>
+			<p>// 1. Código afuera corre primero antes de descargar los datos.
+
+				d3.tsv("data.tsv", function(error, data) {
+				  // 3. Código aquí corre al final, despues de la descarga
+				});
+
+				// 2. Código aquí corre segundo, mientras de descarga el archivo. 
+			<p>
+			<pre style="tab-size:16;">
+				<code class="javascript">name	value
+					Locke	<span class="number">4</span>
+					Reyes	<span class="number">8</span>
+					Ford	<span class="number">15</span>
+					Jarrah	<span class="number">16</span>
+					Shephard	<span class="number">23</span>
+					Kwon	<span class="number">42</span>
+				</code>
+			</pre>
+
+			<p># selection.attr(name[, value])	</p>
+			<pre>
+				circle = svg.select('circle')
+							.attr('r', 20)
+			</pre>
+
+			<p># selection.style(name[, value[, priority]])	</p>
+			<pre>
+				circle.style('fill','red'); 
+			</pre>
+
+			<p># selection.classed(name[, value])	</p>
+			<pre>
+				circle.classed('alecs',true); 
+			</pre>
+		</div>
+	</div>
+
+
+</div>
