@@ -1,0 +1,204 @@
+<div class="container">
+
+	<div>
+    	<acme-navbar creationDate="main.creationDate" />
+ 	</div>
+
+
+ 	<style>
+
+		.chart div, 
+		.chart-alecs div {
+		  font: 10px sans-serif;
+		  background-color: steelblue;
+		  text-align: right;
+		  padding: 3px;
+		  margin: 1px;
+		  color: white;
+		}
+	</style>
+
+
+	<div class="chart">
+	  <div style="width: 40px;">4</div>
+	  <div style="width: 80px;">8</div>
+	  <div style="width: 150px;">15</div>
+	  <div style="width: 160px;">16</div>
+	  <div style="width: 230px;">23</div>
+	  <div style="width: 420px;">42</div>
+	</div>
+
+	<br>
+	<div class="chart-alecs">
+
+	</div>
+
+	<script type="text/javascript">
+
+		var data = [4, 8, 15, 16, 23, 42,100];
+
+		d3.select(".chart")
+				  .selectAll("div")
+				    .data(data)
+				    .style("width", function(d) { return d * 2 + "px"; })
+				  .enter().append("div")
+				    .style("width", function(d) { return d * 20 + "px"; })
+				    .text(function(d) { return d; });
+
+
+		var data = [50, 8, 50];
+
+		d3.select(".chart")
+				  .selectAll("div")
+				    .data(data)
+				    .style("width", function(d) { return d * 10 + "px"; })
+				    .text(function(d) { return d; });
+
+		// var data = [1, 5, 18, 30];
+
+		// d3.select(".chart")
+		// 		  .selectAll("div")
+		// 		    .data(data)
+		// 		    .style("width", function(d) { return d * 10 + "px"; })
+		// 		    .exit()
+		// 		    .remove()
+
+		var data = [
+			  {name: "A", width: 1},
+			  {name: "B", width: 5},
+			  {name: "C", width: 18},
+			  {name: "D", width: 30},
+			  {name: "E", width: 50},
+			];
+
+		function name(d) {
+		  return d.name;
+		}
+
+		d3.select(".chart-alecs")
+				  .selectAll("div")
+				    .data(data,name)
+				  .enter().append("div")
+				    .style("width", function(d) { console.log(d); return d.width * 10 + "px"; })
+				    .text(function(d) { return d.name; });
+
+		var data = [
+			  {name: "B", width: 5},
+			  {name: "A", width: 1},
+			  {name: "D", width: 30},
+			  {name: "E", width: 50},
+			  {name: "C", width: 18},
+			];
+
+		d3.select(".chart-alecs")
+				  .selectAll("div")
+				    .data(data,name)
+				    .style("width", function(d) { console.log(d); return d.width * 10 + "px"; })
+				    .text(function(d) { return d.name; });
+
+
+		var data = [
+			  {name: "A", width: 50},
+			  {name: "C", width: 50},
+			  {name: "E", width: 50},
+			];
+
+		d3.select(".chart-alecs")
+				  .selectAll("div")
+				    .data(data,name)
+				    .style("width", function(d) { return d.width * 10 + "px"; })
+				    .text(function(d) { return d.name + ' Alecs'; })
+
+
+		var data = [
+			  {name: "A", width: 50},
+			  {name: "C", width: 50},
+			  {name: "E", width: 50},
+			  {name: "Z", width: 50},
+			];
+
+		d3.select(".chart-alecs")
+				  .selectAll("div")
+				    .data(data,name)
+				    .style("width", function(d) { return d.width * 10 + "px"; })
+				    .text(function(d) { return d.name + ' Mod'; })
+				  .enter().append("div")
+				  	.style("width", function(d) { return d.width * 10 + "px"; })
+				  	.text(function(d) { return d.name + ' New'; })
+
+		d3.select(".chart-alecs")
+				  .selectAll("div")
+				    .data(data,name)
+				  .exit()
+				  	.text(function(d){return d.name + ' Remove'; })
+				  	//.remove()
+				  
+
+
+	</script>
+
+	<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<h2>Creando la gráfica con d3</h2>
+			<p># selectAll( ).data( name ).enter( ).append <p>
+			<pre>
+			 	d3.select(".chart-alecs")
+				  .selectAll("div")
+				    .data(data)
+				  .enter().append("div")
+				    .style("width", function(d) { return d * 10 + "px"; })
+				    .text(function(d) { return d; });
+			</pre>
+
+			<h2>Actualizando Elementos</h2>
+			<p># selectAll( ).data( name ) <p>
+			<pre>
+			 	var data = [1, 5, 18, 30, 20, 13];
+
+				d3.select(".chart-alecs")
+						  .selectAll("div")
+						    .data(data)
+						    .style("width", function(d) { return d * 10 + "px"; })
+			</pre>
+
+
+			<h2>Eliminando Elementos</h2>
+			<p># selectAll( ).data( name ).exit( ).remove( ) <p>
+			<pre>
+			 	var data = [1, 5, 18, 30];
+
+				d3.select(".chart-alecs")
+						  .selectAll("div")
+						    .data(data)
+						    .style("width", function(d) { return d * 10 + "px"; })
+						    .exit()
+						    .remove()
+			</pre>
+
+			<h2>Joins con Llaves</h2>
+			<p># selectAll( ).data( data,name ) <p>
+			<pre>
+			 	var data = [
+					  {name: "A", width: 1},
+					  {name: "B", width: 5},
+					  {name: "C", width: 18},
+					  {name: "D", width: 30},
+					  {name: "E", width: 50},
+					];
+
+				function name(d) {
+				  return d.name;
+				}
+
+				d3.select(".chart-alecs")
+						  .selectAll("div")
+						    .data(data,name)
+						  .enter().append("div")
+						    .style("width", function(d) { console.log(d); return d.width * 10 + "px"; })
+						    .text(function(d) { return d.name; });
+			</pre>
+			
+		</div>
+	</div>
+
+</div>
